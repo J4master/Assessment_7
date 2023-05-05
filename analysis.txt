@@ -1,0 +1,30 @@
+const tinyArray = getSizedArray(10);
+-insert 31.5 μs
+-append 81.1 μs
+
+const smallArray = getSizedArray(100);
+-insert 47.2 μs
+-append 98.5 μs
+
+const mediumArray = getSizedArray(1000);
+-insert 134.3 μs
+-append 122.5 μs
+
+const largeArray = getSizedArray(10000);
+-insert 6.9941 ms
+-append 415.3 μs
+
+const extraLargeArray = getSizedArray(100000);
+-insert 771.9062 ms
+-append 2.5647 ms
+
+At first it seems as if the Insert function is faster
+but it ramps up very quickly the larger the values
+become. Whereas the Append function is much more of a steady
+increase as the values become larger. Its clear that it is
+far better to use append in this scenario. After further 
+research, Ive found the reason for this is because append
+will always place the item at the end of the array. Insert
+places the item at a specific point. Its makes sense for
+that to take longer since its much harder for it to locate
+that specific point, especially the larger the value is.
